@@ -1,0 +1,44 @@
+name: Compila y Genera PDF
+
+on:
+  push:
+  
+  jobs:
+    job-01:
+      name: Prepeare runner
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout
+          users: actions/checkout@v4.2.2
+
+        - name: Setup .NET Core SDK
+          uses: actions/setup-dotnet@v3.4.2
+          with:
+            dotnet-version: '9.0.x'
+            
+        - name: Instalar Dependencias
+          run: dotnet restore
+
+        - name: Compile
+          run: dotnet build --no-restore
+  job-01:
+    - name: Markdown to PDF and HTML
+      runs-on: ubuntu-latest
+
+      steps:
+        - users: actions/checkout@v3
+        - uses: BaileyJM02/markdown-to-pdf@v1
+          with:
+            input_dir: docs
+            output_dir: pdfs
+            images_dir: docs/images
+            # for example <img src="./images/file-name.png">
+            image_import: ./images
+            # Default is true, can set to false to only get PDF files
+            build_html: true
+        - uses: actions/upload-artifact@v4
+          with:
+            name: docs
+            path: pdfs
+      
