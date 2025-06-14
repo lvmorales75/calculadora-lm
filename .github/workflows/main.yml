@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout
-        users: actions/checkout@v4.2.2
+        uses: actions/checkout@v4.2.2
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3.4.2
