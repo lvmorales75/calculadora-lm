@@ -1,5 +1,5 @@
-name: Compila y Genera PDF
-
+name: GitHub Actions Demo - Class 05.01 - Compila y Genera PDF
+run-name: ${{ github.actor }} Testing Actions in Marketplace - Compila .Net & Genera PDF - Class 05-01 🚀
 on: 
   push:
 jobs:
@@ -23,6 +23,7 @@ jobs:
         run: dotnet build --no-restore
   
   job-02:
+    needs:  job-01
     name: Markdown to PDF and HTML
     runs-on: ubuntu-latest
     
