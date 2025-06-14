@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Hello
-        uses: lvmorales75/uses: lvmorales75/demo-actions-js@v1.0
+        uses: lvmorales75/demo-actions-js@v1.0
         with:
             who-to-greet: 'Laura'
             
