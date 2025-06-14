@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Hello
+        uses: lvmorales75/gh-action-js-custom-action-c05-02@v1.0
+        with:
+            who-to-greet: 'Laura'
+            
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
