@@ -1,34 +1,35 @@
 name: Compila y Genera PDF
 
-on:
+on: 
   push:
-  
-  jobs:
-    job-01:
-      name: Prepeare runner
-      runs-on: ubuntu-latest
-
-      steps:
-        - name: Checkout
-          users: actions/checkout@v4.2.2
-
-        - name: Setup .NET Core SDK
-          uses: actions/setup-dotnet@v3.4.2
-          with:
-            dotnet-version: '9.0.x'
-            
-        - name: Instalar Dependencias
-          run: dotnet restore
-
-        - name: Compile
-          run: dotnet build --no-restore
+jobs:
   job-01:
-    - name: Markdown to PDF and HTML
-      runs-on: ubuntu-latest
+    name: Prepeare runner
+    runs-on: ubuntu-latest
 
-      steps:
-        - users: actions/checkout@v3
-        - uses: BaileyJM02/markdown-to-pdf@v1
+    steps:
+      - name: Checkout
+        users: actions/checkout@v4.2.2
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3.4.2
+        with:
+          dotnet-version: '9.0.x'
+            
+      - name: Instalar Dependencias
+        run: dotnet restore
+
+      - name: Compile
+        run: dotnet build --no-restore
+  
+  job-02:
+    name: Markdown to PDF and HTML
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Generacion de PDF
+        users: actions/checkout@v3
+        uses: BaileyJM02/markdown-to-pdf@v1
           with:
             input_dir: docs
             output_dir: pdfs
