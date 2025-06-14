@@ -1,5 +1,0 @@
-name: Compila y genera pdf
-
-on:
-  push:
-    main

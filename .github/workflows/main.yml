@@ -28,8 +28,9 @@ jobs:
     
     steps:
       - name: Generacion de PDF
-      - uses: actions/checkout@v3
-      - uses: BaileyJM02/markdown-to-pdf@v1
+        uses: actions/checkout@v3
+      - name: Use Markdown to PDF Action  
+        uses: BaileyJM02/markdown-to-pdf@v1
         with:
           input_dir: docs
           output_dir: pdfs
